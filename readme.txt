@@ -1,15 +1,33 @@
-this is my first git
+ error-feedBack.js 前端js异常上报Mattermost
 
-and this is second add words change
+使用方法：
 
-Git is a distributed version control system.
-Git is free software distributed under the GPL
+1、error-feedBack.js加载到其他的js之前
+
+2、简单的使用方法：（这个执行方法要放在其他代码执行之前,main.js）
+
+errorReportConfig({
+  url:'http://www.baidu.com',  //发送到后台的url  *必须
+})
 
 
-change somethings
+3、如果需要新增上报参数，或者要知道发送给后台的回调。可以用下面的方法
 
-what is cat ?
+errorReportConfig({
 
-cat is mao
+  url:'http://www.baidu.com', //发送到后台的url  *必须
 
-boss is perfect 
+  data:{},   //自定义添加上报参数
+
+  successCallBack:function(response, xml){
+
+      // 发送给后台成功的回调，-可省略
+  },
+
+  failCallBack:function(error){
+
+      // 发送给后台失败的回调，-可省略
+  }
+})
+
+
